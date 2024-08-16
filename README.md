@@ -5,12 +5,15 @@ python-sample-webapp
 - Pod의 Hostname, IP Address 확인
 - Pod가 존재하는 Node 정보 확인
 
-# App Info
+## App Info
 - Python 3.9.1
+
+    - Port: 8080
+
 - Flask 3.x
 - Gunicorn (예정)
 
-# Setup
+## Setup
 ```markdown
 1. Python 버전 세팅
 pyenv local 3.9.1
@@ -22,12 +25,12 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-# Check Container Image Arch
+## Check Container Image Arch
 ```bash
 docker inspect IMAGE | grep -i arch
 ```
 
-# Pod에 K8s API 권한 부여
+## Pod에 K8s API 권한 부여
 
 ```markdown
 # Namespace: api
