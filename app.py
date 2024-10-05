@@ -1,6 +1,7 @@
 import os
 import logging
 import socket
+import uvicorn
 from fastapi import FastAPI, Request, HTTPException
 
 
@@ -57,7 +58,7 @@ async def home(request: Request):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=8000,debug=True)
-# else:
-#     gunicorn_logger = logging.getLogger('gunicorn.error')
-#     app.logger.handlers = gunicorn_logger.handlers
-#     app.logger.setLevel(gunicorn_logger.level)
+else:
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
