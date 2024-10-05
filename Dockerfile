@@ -15,4 +15,4 @@ ENV PATH="/home/python/.local/bin:$PATH"
 
 EXPOSE 8080
 
-CMD [ "gunicorn", "-k", "uvicorn.workers.UvicornWorker", "-c", "gunicorn_config.py", "app:app" ]
+CMD ["fastapi", "run", "app.py"]
