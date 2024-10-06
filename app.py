@@ -1,5 +1,4 @@
 import os
-import logging
 import socket
 import uvicorn
 from fastapi import FastAPI, Request, HTTPException
@@ -11,12 +10,13 @@ app = FastAPI()
 fake_rank_db = {
         "son": 1, 
         "maddison": 2, 
-        "solanke": 3
+        "solanke": 3,
+        "testplayer": 4
 }
 
 # Get Player's Ranking by Query Parameter
 @app.get("/api/v1/ranks")
-async def read_item(player: str = None, status_code=200):
+def read_item(player: str = None, status_code=200):
     if player is None:
         return fake_rank_db
     if player not in fake_rank_db:
@@ -40,7 +40,7 @@ def get_hostname():
 
 # Get Request Info
 @app.get("/", status_code=200)
-async def home(request: Request):
+def home(request: Request):
 
     request_info = {
         'request_header': request.headers,

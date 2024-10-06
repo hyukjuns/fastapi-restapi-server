@@ -21,6 +21,12 @@ fastapi dev main.py
 deactivate
 ```
 
+### Build
+```
+# AMD64
+docker build --platform linux/amd64 --no-cache -t hyukjun/fastapi-sample-webapp:v0.0.1 .
+```
+
 ### Reference
 - [FastAPI Docs](https://fastapi.tiangolo.com/)
 - [FastAPI Source Code](https://github.com/fastapi/fastapi)

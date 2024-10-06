@@ -1,18 +1,22 @@
 FROM python:3.11-slim
 
+# Container User
 RUN useradd --create-home --shell /bin/bash python
-
 USER python
 WORKDIR /home/python
 
-COPY requirements.txt .
-COPY ./*.py .
+# Package
+COPY requirements.txt /home/python
+RUN pip install --no-cache-dir  --upgrade -r requirements.txt
 
-RUN pip install -r requirements.txt
+# Application File
+COPY app.py /home/python
 
 # Setting PATH
 ENV PATH="/home/python/.local/bin:$PATH"
 
-EXPOSE 8080
+# Port
+EXPOSE 80
 
-CMD ["fastapi", "run", "app.py"]
+# Worker Count = 1
+CMD ["fastapi", "run", "app.py", "--port", "80"]
