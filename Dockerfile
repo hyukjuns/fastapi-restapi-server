@@ -7,7 +7,7 @@ WORKDIR /home/python
 
 # Package
 COPY requirements.txt /home/python
-RUN pip install --upgrade -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Application File
 COPY app.py /home/python
