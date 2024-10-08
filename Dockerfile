@@ -7,7 +7,7 @@ WORKDIR /home/python
 
 # Package
 COPY requirements.txt /home/python
-RUN pip install --no-cache-dir  --upgrade -r requirements.txt
+RUN pip install --upgrade -r requirements.txt
 
 # Application File
 COPY app.py /home/python
