@@ -17,6 +17,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v5.2.0
       with:
+        id: cp310
         python-version: '3.11.7'
         cache: 'pip' # caching pip dependencies
 
@@ -37,3 +38,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: devaksacr001.azurecr.io/fastapi-sample-webapp:latest
+    - run: echo '${{ steps.cp310.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
