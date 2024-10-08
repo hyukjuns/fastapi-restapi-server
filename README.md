@@ -37,3 +37,4 @@ docker build --platform linux/amd64 --no-cache -t hyukjun/fastapi-sample-webapp:
 - [Uvicorn Setting](https://www.uvicorn.org/settings/)
 - [One process per Container](https://fastapi.tiangolo.com/deployment/docker/#one-process-per-container)
     - Containerized 해서 k8s에 배포할 거면 Worker 프로세스를 여러개 만들 필요 없음, 컨테이너당 1개의 프로세스면 충분, replication은 pod로 하면 됨
+- [Github Action-Python Build](https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-python)
