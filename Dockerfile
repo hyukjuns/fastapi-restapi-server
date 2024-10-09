@@ -10,7 +10,7 @@ COPY requirements.txt /home/python
 RUN pip install -r requirements.txt
 
 # Application File
-COPY app.py /home/python
+COPY apps/app.py /home/python
 
 # Setting PATH
 ENV PATH="/home/python/.local/bin:$PATH"
