@@ -26,7 +26,7 @@ def welcome(request: Request, response_class=HTMLResponse):
                         <title> Welcome Page </title>
                     </head>
                     <body>
-                        <h1> Welcome to my player info server </h1>
+                        <h1> Welcome to my soccer player info server </h1>
                         <p>
                             - <strong>Server Hostname:</strong> {hostname} <br>
                             - <strong>Client Information:</strong>:  <br>

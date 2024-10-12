@@ -1,9 +1,10 @@
 # FastAPI Sample API Server
 
 ### REST API Features
-- return hostname
-- return request header
-- return player ranks
+- Welcome Page -> HTML
+- Soccer Player Info Class
+- CRUD: Get / Post / Put / Delete
+- Database Engine
 
 ### Environment
 - Python > 3.11.x
