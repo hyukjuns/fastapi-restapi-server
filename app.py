@@ -1,86 +1,67 @@
-import os
-import socket
 import uvicorn
-import datetime
 from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
+import logging
+
+# Setting Logging 
+logger = logging.getLogger(__name__)
+
+# Init App
 app = FastAPI()
 
+# Define Class
 class Post(BaseModel):
-    name: str | None = None
-    content: str | None = None
+    publisher: str
+    title: str
+    contents: str | None = None
 
-post_list = [] # Fake DB
+# Fake DB
+post_list = []
 
-# Read
+# GET - Read
 @app.get("/posts", status_code=200)
-def list_teams():
-    return post_list
+def list_post():
+    logger.info("touched /posts")
+    try:
+        return post_list
+    except HTTPException as e:
+        logger.info(e)
+        raise HTTPException(status_code=404, detail="Item not found")
 
 # @app.get("/teams/first", status_code=200)
 # @app.get("/teams/last", status_code=200)
 # @app.get("/teams/{id}", status_code=200)
 
-# Create
+# POST - Create
 @app.post("/posts", status_code=201)
 def create_post(post: Post):
-    print(post)
-    post_list.append(post)
-    return post
+    try:
+        post_list.append(post)
+        return post
+    except HTTPException as e:
+        logger.info(e)
+        raise HTTPException(status_code=404, detail="Item not found")
 
-# Update
-@app.put("/posts/{id}", status_code=200)
+# PUT - Update
+@app.put("/posts/{id}")
 def update_post(id: int, post: Post):
-    post_list[id] = post
-    return 200
+    try:
+        post_list[id] = post
+        return post_list
+    except HTTPException as e:
+        logger.info(e)
+        raise HTTPException(status_code=404, detail="Item not found")
 
-# Delete
-@app.delete("/posts/{id}", status_code=200)
+# DELETE - Delete
+@app.delete("/posts/{id}")
 def delete_post(id: int):
-    target = post_list[id]
-    post_list.remove(target)
-    return 200
-
-# Welcome Page
-@app.get("/", status_code=200)
-def welcome(request: Request, response_class=HTMLResponse):
-
-    if os.path.exists('/var/run/secrets/kubernetes.io/serviceaccount') or os.getenv('KUBERNETES_SERVICE_HOST') is not None:
-        hostname = os.environ.get("HOSTNAME")
-        
-    else:
-        hostname = socket.gethostname()
-    
-    header_list = ""
-    for item in request.headers.items():
-        header_list += f"<li>{item[0]}: {item[1]}</li>"
-    
-    html_content = f"""
-                <html>
-                    <head>
-                        <title> Welcome Page </title>
-                    </head>
-                    <body>
-                        <h1> Welcome to my sample FastAPI Server </h1>
-                        <ul>
-                            <li> <strong>Server Hostname:</strong> {hostname}</li> 
-                            <li> <strong>Client Information:</strong> </li> 
-                            <li> <strong>request_header:</strong> </li>
-                                <ul>
-                                    {header_list}
-                                </ul> 
-                            <li> <strong>request_method:</strong> {request.method}</li> 
-                            <li> <strong>request_address:</strong> {request.client}</li> 
-                            <li> <strong>request_path_params:</strong> {request.path_params}</li> 
-                            <li> <strong>request_query_params:</strong> {request.query_params}</li> 
-                            <li> <strong>request_url:</strong> {request.url} </li>
-                        </ul>
-                    </body>
-                </html>
-            """
-    return HTMLResponse(content=html_content, status_code=200)
-
+    try:
+        target = post_list[id]
+        post_list.remove(target)
+        return post_list
+    except Exception as e:
+        logger.info(e)
+        raise HTTPException(status_code=404, detail="Item not found")
 
 if __name__ == "__main__":
     uvicorn.run("app:app", 
