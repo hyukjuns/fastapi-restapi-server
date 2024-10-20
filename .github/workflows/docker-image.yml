@@ -38,5 +38,5 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: devaksacr001.azurecr.io/fastapi-sample-webapp:latest
+          tags: devaksacr001.azurecr.io/fastapi-sample-webapp:${{ github.sha }}
     - run: echo '${{ steps.cp310.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
