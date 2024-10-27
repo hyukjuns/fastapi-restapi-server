@@ -10,18 +10,20 @@ on: workflow_dispatch
 
 jobs:
 
-  build:
+  Build-And-Push:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Setup Python
       uses: actions/setup-python@v5.2.0
-      id: cp310
+      id: cache
       with:
         python-version: '3.11.7'
         cache: 'pip' # caching pip dependencies
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
@@ -39,4 +41,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: devaksacr001.azurecr.io/fastapi-sample-webapp:${{ github.sha }}
-    - run: echo '${{ steps.cp310.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
+    
+    - run: echo cache result -> '${{ steps.cache.outputs.cache-hit }}' # true if cache-hit occurred on the primary key

@@ -1,11 +1,5 @@
 # FastAPI Sample API Server
 
-### REST API Features
-- Welcome Page -> HTML
-- Soccer Player Info Class
-- CRUD: Get / Post / Put / Delete
-- Database Engine
-
 ### Environment
 - Python > 3.11.x
 - FastAPI > 0.115.0
