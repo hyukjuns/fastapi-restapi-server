@@ -10,7 +10,7 @@ COPY requirements.txt /home/python
 RUN pip install -r requirements.txt
 
 # Application File
-COPY app.py /home/python
+COPY app/main.py /home/python
 
 # Setting PATH
 ENV PATH="/home/python/.local/bin:$PATH"
@@ -19,4 +19,4 @@ ENV PATH="/home/python/.local/bin:$PATH"
 EXPOSE 80
 
 # Worker Count = 1, run by uvicorn
-CMD ["fastapi", "run", "app.py", "--port", "80"]
+CMD ["fastapi", "run", "main.py", "--port", "80"]
