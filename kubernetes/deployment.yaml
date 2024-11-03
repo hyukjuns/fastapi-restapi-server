@@ -15,7 +15,7 @@ spec:
       serviceAccountName: api-sa
       containers:
         - name: fastapi-webapp
-          image: hyukjun/fastapi-sample-webapp:test
+          image: hyukjun/fastapi-sample-webapp:3f3c97b05fd4a4688eaaaa9cb1f1e7505a0d1f97
           resources:
             limits:
               cpu: 200m
