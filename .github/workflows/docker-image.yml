@@ -7,6 +7,9 @@ on:
   #   branches: [ "main" ]
   workflow_dispatch: 
 
+env:
+  IMAGE_NAME: fastapi-sample-webapp
+
 jobs:
 
   Build-And-Push:
@@ -38,6 +41,8 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: hyukjun/fastapi-sample-webapp:${{ github.sha }}
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+    - name: Modify Manifest
+      run: yq -i '.spec.template.spec.containers[0].image="${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"' kubernetes/deployment.yaml
     
     - run: echo cache result -> '${{ steps.cache.outputs.cache-hit }}' # true if cache-hit occurred on the primary key

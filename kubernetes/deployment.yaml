@@ -14,12 +14,12 @@ spec:
     spec:
       serviceAccountName: api-sa
       containers:
-      - name: fastapi-webapp
-        image: tfdevacr001.azurecr.io/fastapi-sample-webapp:latest
-        resources:
-          limits:
-            cpu: 200m
-            memory: 256Mi
-        ports:
-        - name: http
-          containerPort: 80
+        - name: fastapi-webapp
+          image: hyukjun/fastapi-sample-webapp:test
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          ports:
+            - name: http
+              containerPort: 80

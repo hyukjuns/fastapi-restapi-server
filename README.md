@@ -23,6 +23,7 @@ docker build --platform linux/amd64 --no-cache -t hyukjun/fastapi-sample-webapp:
 ```
 
 ### Reference
+- [yq](https://mikefarah.gitbook.io/yq)
 - [FastAPI Docs](https://fastapi.tiangolo.com/)
 - [FastAPI Source Code](https://github.com/fastapi/fastapi)
 - [virtual-environments](https://fastapi.tiangolo.com/virtual-environments/#install-packages-directly)
