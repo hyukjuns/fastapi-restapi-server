@@ -43,6 +43,12 @@ jobs:
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
     - name: Modify Manifest
-      run: yq -i '.spec.template.spec.containers[0].image="${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"' kubernetes/deployment.yaml
+      run: |
+        yq -i '.spec.template.spec.containers[0].image="${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"' kubernetes/deployment.yaml
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'hyukjuns@github.com'
+        git add kubernetes/deployment.yaml
+        git commit -m "Update kubernetes/deployment.yaml by GitHub Actions"
+        git push
     
     - run: echo cache result -> '${{ steps.cache.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
