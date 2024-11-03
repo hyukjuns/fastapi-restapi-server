@@ -16,7 +16,7 @@ COPY app/main.py /home/python
 ENV PATH="/home/python/.local/bin:$PATH"
 
 # Port
-EXPOSE 80
+EXPOSE 8080
 
 # Worker Count = 1, run by uvicorn
-CMD ["fastapi", "run", "main.py", "--port", "80"]
+CMD ["fastapi", "run", "main.py", "--port", "8080"]
