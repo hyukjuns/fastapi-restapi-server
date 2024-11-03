@@ -1,12 +1,11 @@
 name: Docker Image CI
 
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
-
-on: workflow_dispatch
+on:
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+  workflow_dispatch: 
 
 jobs:
 
@@ -27,19 +26,18 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
-    - name: Docker Login to ACR
+    - name: Docker Login to Dockerhub
       uses: docker/login-action@v3
       with:
-        registry: devaksacr001.azurecr.io
-        username: ${{ vars.AZURE_CLIENT_ID }}
-        password: ${{ secrets.AZURE_CLIENT_SECRET }}
-
+        username: ${{ vars.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
     - name: Build and Push Docker image to ACR
       uses: docker/build-push-action@v6.9.0
       with:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: devaksacr001.azurecr.io/fastapi-sample-webapp:${{ github.sha }}
+          tags: hyukjun/fastapi-sample-webapp:${{ github.sha }}
     
     - run: echo cache result -> '${{ steps.cache.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
