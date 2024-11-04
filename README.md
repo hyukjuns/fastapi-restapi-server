@@ -1,5 +1,10 @@
 # FastAPI Sample API Server
 
+### Todo
+- Pytest
+- Deployment Strategy
+- k8s - deployment readiness probe / liveness probe
+
 ### CI/CD
 - CI: Github Actions
     1. Commit & Merge
