@@ -4,7 +4,10 @@
 - Pytest
 - Deployment Strategy
 - k8s - deployment readiness probe / liveness probe
-
+### k8s
+- Startup - ex: DB 커넥션 확인
+- Readiness - ex: App 서빙 가능 상태 확인
+- Liveness - ex: App 기동 상태 확인
 ### CI/CD
 - CI: Github Actions
     1. Commit & Merge

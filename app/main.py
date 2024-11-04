@@ -78,11 +78,17 @@ async def hostname():
     else:
         hostname = socket.gethostname()
         return hostname
-    
-# Check Ready - EX) DB Connection
+
+# Check Ready
+@app.get("/ready")
+async def ready():
+    return "Ready OK"
+
+# Check Startup
 @app.get("/connections/db")
-async def hostname():
+async def connections_db():
     return "DB Connection OK"
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, log_level="debug", reload=True, access_log=True)
