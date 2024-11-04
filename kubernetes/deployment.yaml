@@ -22,3 +22,24 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+          # For Security
+          securityContexts:
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+          # Check Availability
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /connections/db
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3

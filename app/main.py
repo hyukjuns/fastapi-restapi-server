@@ -67,7 +67,7 @@ async def delete_article(id: int):
     except IndexError as e:
         raise HTTPException(status_code=404, detail=f"Item not found!")
 
-# Health Check / Return hostname by JSON
+# Check Health / Return hostname by JSON
 @app.get("/")
 async def hostname():
     if os.path.exists('/var/run/secrets/kubernetes.io/serviceaccount') or os.getenv('KUBERNETES_SERVICE_HOST') is not None:
@@ -78,6 +78,11 @@ async def hostname():
     else:
         hostname = socket.gethostname()
         return hostname
+    
+# Check Ready - EX) DB Connection
+@app.get("/connections/db")
+async def hostname():
+    return "DB Connection OK"
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, log_level="debug", reload=True, access_log=True)
