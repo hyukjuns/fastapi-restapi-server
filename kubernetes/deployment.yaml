@@ -26,7 +26,7 @@ spec:
           securityContext:
             runAsUser: 999
             runAsNonRoot: true
-            readOnlyRootFilesystem: true
+            # readOnlyRootFilesystem: true
           # Check Availability
           livenessProbe:
             httpGet:
