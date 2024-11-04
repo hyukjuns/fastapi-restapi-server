@@ -24,7 +24,7 @@ spec:
               containerPort: 8080
           # For Security
           securityContext:
-            runAsUser: 999
+            runAsUser: 1000
             runAsNonRoot: true
             # readOnlyRootFilesystem: true
           # Check Availability
