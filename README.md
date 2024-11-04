@@ -1,5 +1,16 @@
 # FastAPI Sample API Server
 
+### CI/CD
+- CI: Github Actions
+    1. Commit & Merge
+    2. Test
+    3. Build & Push Docker Image
+    4. Delivery to Container Registry
+    5. Modify Deployment Manifest (Image Tag)
+- CD: ArgoCD
+    1. Detect Deployment Manifest (Image Tag)
+    2. Deploy to Cluster (Rolling Update, Blue/Green, Canary)
+
 ### Environment
 - Python > 3.11.x
 - FastAPI > 0.115.0
