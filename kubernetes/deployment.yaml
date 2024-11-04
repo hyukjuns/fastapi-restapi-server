@@ -23,7 +23,7 @@ spec:
             - name: http
               containerPort: 8080
           # For Security
-          securityContexts:
+          securityContext:
             runAsNonRoot: true
             readOnlyRootFilesystem: true
           # Check Availability
