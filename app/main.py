@@ -67,27 +67,25 @@ async def delete_article(id: int):
     except IndexError as e:
         raise HTTPException(status_code=404, detail=f"Item not found!")
 
-# Check Health / Return hostname by JSON
+# Check Healthy
 @app.get("/")
 async def hostname():
     if os.path.exists('/var/run/secrets/kubernetes.io/serviceaccount') or os.getenv('KUBERNETES_SERVICE_HOST') is not None:
         hostname = os.environ.get("HOSTNAME")
-        return {
-                "hostname": {hostname}
-            }
+        return hostname            
     else:
         hostname = socket.gethostname()
         return hostname
 
-# Check Ready
+# Check Readiness
 @app.get("/ready")
 async def ready():
-    return "Ready OK"
+    return "Application can response"
 
 # Check Startup
-@app.get("/connections/db")
+@app.get("/connections")
 async def connections_db():
-    return "DB Connection OK"
+    return "Database Connection OK"
 
 
 if __name__ == "__main__":

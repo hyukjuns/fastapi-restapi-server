@@ -1,7 +1,10 @@
 FROM python:3.11-slim
 
 # Container User
-RUN useradd --create-home --shell /bin/bash python
+# -m: create home -s: login shell, Group is auto created
+RUN useradd -ms /bin/bash -u 1001 python
+
+# Setting Home
 USER python
 WORKDIR /home/python
 
