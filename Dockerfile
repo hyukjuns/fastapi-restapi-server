@@ -5,7 +5,7 @@ FROM python:3.11-slim
 RUN useradd -ms /bin/bash -u 1001 python
 
 # Setting Home
-USER python
+USER 1001
 WORKDIR /home/python
 
 # Package

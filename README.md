@@ -46,6 +46,7 @@ docker build --platform linux/amd64 --no-cache -t hyukjun/fastapi-sample-webapp:
 ```
 
 ### Reference
+- [Docker Non Root User](https://www.docker.com/blog/understanding-the-docker-user-instruction/)
 - [yq](https://mikefarah.gitbook.io/yq)
 - [FastAPI Docs](https://fastapi.tiangolo.com/)
 - [FastAPI Source Code](https://github.com/fastapi/fastapi)

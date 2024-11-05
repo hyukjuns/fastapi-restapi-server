@@ -24,6 +24,12 @@ spec:
               containerPort: 8080
           # For Security
           securityContext:
+            # container의 USER는 Numeric 해야함 (해당 사용자가 루트권한인지 식별하기위해)
+            # 만약 pod runAsUser의 uid가 dockerfile의 uid와 다르다면 덮어씀
+            # 따라서 컨테이너 내 파일시스템에 대한 권한 문제가 발생할 수 있음
+            # 즉, runAsNonRoot를 사용하고 싶다면
+            # dockerfile에 사용자를 지정할때 이름 뿐만 아닌 uid를 항상 지정하고 runAsNonRoot를 쓰면됨
+            # 해당 uid를 runAsUser로 함께 세팅해서 사용해도됨
             runAsNonRoot: true
             readOnlyRootFilesystem: true
           # Check Availability
