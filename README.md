@@ -1,7 +1,7 @@
 # FastAPI Sample API Server
 
 ### Todo
-- Pytest
+- Pytest, pip cache
 - Deployment Strategy
 - k8s - deployment readiness probe / liveness probe
 ### k8s
