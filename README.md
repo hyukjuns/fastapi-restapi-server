@@ -4,6 +4,7 @@
 - Pytest, pip cache
 - Deployment Strategy
 - k8s - deployment readiness probe / liveness probe
+- slack notification
 ### k8s
 - Startup - ex: DB 커넥션 확인
 - Readiness - ex: App 서빙 가능 상태 확인
