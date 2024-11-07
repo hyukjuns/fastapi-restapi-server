@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: fastapi-webapp
-          image: hyukjun/fastapi-sample-webapp:19a66e1a918a48be93d47521bae983acbc191dff
+          image: hyukjun/fastapi-sample-webapp:526e4426e41bdc91bc54043a543277a7d9c67fdd
           resources:
             limits:
               cpu: 200m
