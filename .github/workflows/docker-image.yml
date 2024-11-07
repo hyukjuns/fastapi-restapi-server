@@ -26,6 +26,18 @@ jobs:
         python-version: '3.11.7'
         cache: 'pip' # caching pip dependencies
 
+    - name: Pytest
+      run: |
+          pip install -r requirements.txt
+          pip install pytest
+          pytest app/test_rest.py
+    - name: Upload pytest test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-result
+        path: junit/test-results.xml
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
