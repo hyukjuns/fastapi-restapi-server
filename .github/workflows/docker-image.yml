@@ -30,13 +30,13 @@ jobs:
       run: |
           pip install -r requirements.txt
           pip install pytest
-          pytest app/test_rest.py | tee app/test-results.xml
+          pytest app/test_rest.py | tee app/test-results.txt
 
     - name: Upload pytest test results
       uses: actions/upload-artifact@v4
       with:
         name: pytest-result
-        path: app/test-results.xml
+        path: app/test-results.txt
 
       # Use always() to always run this step to publish test results when there are test failures
       if: ${{ always() }}
