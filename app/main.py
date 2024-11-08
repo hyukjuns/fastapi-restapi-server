@@ -85,7 +85,7 @@ async def ready():
 # Check Startup
 @app.get("/connections")
 async def connections_db():
-    return "Database Connection OK test"
+    return "Database Connection OK 123"
 
 
 if __name__ == "__main__":
