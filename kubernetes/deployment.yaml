@@ -5,7 +5,7 @@ metadata:
 spec:
   replicas: 3
   strategy:
-    rollingUpdate: 
+    rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
   selector:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: fastapi-webapp
-          image: hyukjun/fastapi-sample-webapp:0a93108a6e7745e0bfa341b7c23406cb60bc6640
+          image: hyukjun/fastapi-sample-webapp:8058fe22b32301bc9fcc6d495d869403b84b8994
           resources:
             limits:
               cpu: 200m
