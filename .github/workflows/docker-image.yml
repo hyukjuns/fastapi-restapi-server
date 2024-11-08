@@ -9,7 +9,7 @@ on:
     branches: [ "main" ]
     paths:
       - app/**
-  # workflow_dispatch:
+  workflow_dispatch:
 
 env:
   IMAGE_NAME: fastapi-sample-webapp
