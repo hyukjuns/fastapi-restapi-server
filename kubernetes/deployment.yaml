@@ -4,6 +4,10 @@ metadata:
   name: fastapi-webapp
 spec:
   replicas: 3
+  strategy:
+    rollingUpdate: 
+      maxSurge: 25%
+      maxUnavailable: 25%
   selector:
     matchLabels:
       app: fastapi-webapp
