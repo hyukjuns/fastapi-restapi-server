@@ -1,0 +1,134 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.1">
+  <diagram name="Page-1" id="VnzufVDnFu4BaVfIsyBk">
+    <mxGraphModel dx="1304" dy="1792" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-40" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="-180" width="1030" height="585" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-37" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="870" y="-72.75" width="170" height="457.75" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-34" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="-72.75" width="170" height="287.75" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-31" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="665" y="-72.75" width="170" height="457.75" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="465.5" y="-85" width="110" height="74.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3yPXQbm0ngwzEsO7KrLe-3" target="3yPXQbm0ngwzEsO7KrLe-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-3" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.user;" vertex="1" parent="1">
+          <mxGeometry x="280" y="-82.25" width="69" height="69" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-5" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-128.png" vertex="1" parent="1">
+          <mxGeometry x="485.5" y="-82.75" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-6" value="Github Repository&lt;div&gt;/app: Application&lt;/div&gt;&lt;div&gt;/kubernetes: Manifest&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="465.5" y="-13.25" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-7" value="Commit &amp;amp; Push&lt;div&gt;Branch: main&lt;/div&gt;&lt;div&gt;Path: /app&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="340" y="-105" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-8" value="Developer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="274.5" y="-15" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-11" value="Github Action CI Pipeline&lt;div&gt;Job: Pytest&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="681" y="-66" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-15" value="Checkout Repo" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="-25" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-16" value="Setup Python Version" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="55" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-17" value="Pytest and Upload Test result" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="135" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-18" value="Setup Docker Buildx" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="-25" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-19" value="Login to Dockerhub" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="55" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-20" value="Build And Push&lt;div&gt;Container Image&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="135" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-21" value="Notification to Slack" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="295" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-22" value="Modify Deployment Manifest&lt;div&gt;(Image Tag)&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="215" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-23" value="Detect Manifest Change" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="-25" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-24" value="ArgoCD&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;CD Pipeline&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="-66" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-25" value="Sync Real State and Desired State" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="55" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-26" value="Rolling update by Deployment" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="135" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3yPXQbm0ngwzEsO7KrLe-1" target="3yPXQbm0ngwzEsO7KrLe-34">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="955" y="-75" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="520" y="-135" />
+              <mxPoint x="1155" y="-135" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-28" value="Watch Github Repository&lt;div&gt;Path:&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;/kubernetes&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="670" y="-174" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-30" value="Trigger" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="590" y="-66" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.072;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="3yPXQbm0ngwzEsO7KrLe-1" target="3yPXQbm0ngwzEsO7KrLe-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="-40" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="-40" />
+              <mxPoint x="600" y="-40" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-35" value="Notification to Slack" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="215" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3yPXQbm0ngwzEsO7KrLe-36">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="-75" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="850" y="325" />
+              <mxPoint x="850" y="-105" />
+              <mxPoint x="960" y="-105" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-36" value="Approval&amp;nbsp;&lt;div&gt;or Deny&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="285" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-39" value="Github Action CI Pipeline&lt;div&gt;Job: Build And Push&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="890" y="-65" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-42" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn1.iconfinder.com/data/icons/picons-social/57/github_rounded-128.png" vertex="1" parent="1">
+          <mxGeometry x="650" y="-95" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-43" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn1.iconfinder.com/data/icons/picons-social/57/github_rounded-128.png" vertex="1" parent="1">
+          <mxGeometry x="860" y="-95" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3yPXQbm0ngwzEsO7KrLe-46" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://metakube.com/content/images/2023/02/argo-icon-color.png;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="-95" width="50" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
