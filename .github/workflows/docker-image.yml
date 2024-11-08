@@ -16,29 +16,24 @@ env:
 
 jobs:
 
-  Build-And-Push:
-
+  Pytest:
     runs-on: ubuntu-latest
 
     steps:
     # Checkout Repo
     - uses: actions/checkout@v4
-
     # Setup Python version
     - name: Setup Python
       uses: actions/setup-python@v5.2.0
-      id: cache
       with:
         python-version: '3.11.7'
         cache: 'pip' # caching pip dependencies
-
     # Test Python Application
     - name: Pytest
       run: |
           pip install -r requirements.txt
           pip install pytest
           pytest app/test_rest.py | tee app/test-results.txt
-
     # Upload Test Reulst as Artifact
     - name: Upload pytest test results
       uses: actions/upload-artifact@v4
@@ -47,7 +42,13 @@ jobs:
         path: app/test-results.txt
       # Use always() to always run this step to publish test results when there are test failures
       if: ${{ always() }}
-    
+  
+  Build-And-Push:
+    environment: prd-deployment-admin
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout Repo
+    - uses: actions/checkout@v4
     # Setup Docker Buildx 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
@@ -77,9 +78,6 @@ jobs:
         git add kubernetes/deployment.yaml
         git commit -m "Update kubernetes/deployment.yaml by GitHub Actions"
         git push
-    
-    # Check python cache used
-    - run: echo cache result -> '${{ steps.cache.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
     
     # Notification build result to Slack
     - name: Post to a Slack channel
