@@ -111,7 +111,7 @@ docker build --platform linux/amd64 --no-cache -t hyukjun/fastapi-sample-webapp:
     - securityContext.runAsNonRoot 로 비루트 사용자 실행 보장
     - securityContext.readOnlyRootFilesystem 로 호스트 파일시스템에 쓰기 행위 방지
     - rollingUpdate 기본 배포 방식 채택
-    - resources.limit을 사용하여 QoS==Gueranteed 세팅
+    - resources.limits와 requests를 동일하게 하여 QoS를 Gueranteed로 세팅함, 즉, 노드 자원 부족시 Evicted 처리가 쉽게 되지 않도록 우선순위를 높게 설정
 
 > [deployment.yaml](/kubernetes/deployment.yaml)
 ```yaml
@@ -138,6 +138,9 @@ spec:
           image: hyukjun/fastapi-sample-webapp:<github-sha>
           resources:
             limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
               cpu: 200m
               memory: 256Mi
           ports:
