@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: pytest-result
-        path: app/pytest-results-${{ github.sha }}.txt
+        path: app/pytest-results-${{ github.sha }}-${{ env.TIME }}.txt
       if: ${{ always() }}
 
       # Notification build result to Slack

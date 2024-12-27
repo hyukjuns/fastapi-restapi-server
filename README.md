@@ -1,5 +1,9 @@
 # FastAPI Sample API Server
 
+## Todo
+- 배포 전략 (블루그린)
+- 롤백 전략
+
 ## Step
 1. Build Python Web Application
 2. Test Application
