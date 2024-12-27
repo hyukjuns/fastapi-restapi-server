@@ -93,8 +93,8 @@ jobs:
         yq -i '.spec.template.spec.containers[0].image="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"' manifests/rollouts.yaml
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'hyukjuns@github.com'
-        git add kubernetes/deployment.yaml
-        git commit -m "Update kubernetes/deployment.yaml by GitHub Actions"
+        git add manifests/rollouts.yaml
+        git commit -m "Update manifests/rollouts.yaml by GitHub Actions"
         git push
     
     # Notification build result to Slack
