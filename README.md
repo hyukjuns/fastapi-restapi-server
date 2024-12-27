@@ -9,12 +9,12 @@
 2. Test Application
 3. Approve / Deny
 4. Delivery ACR
-5. Deploy QA
-6. Test Application
-7. Approve / Deny
-8. Deploy Production
-9. Monitoring / Logging
-10. Rollback or Continue
+5. Rollouts 매니패스트 수정
+6. ArgoCD에 의해 감지
+7. Argo Rollout - Blue/Green 전략으로 새로운 버전 배포
+8. 신규 버전 테스트 후 프로모트 결정 - 블루/그린 배포 실행
+8. 모니터링 후 롤백 경정
+9. 롤백 혹은 유지
 
 ### Environments
 - Azure
