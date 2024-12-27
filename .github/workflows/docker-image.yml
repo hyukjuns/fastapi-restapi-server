@@ -1,91 +1,94 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ "main" ]
-    paths:
-      - app/**
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - app/**
+  # push:
+  #   branches: [ "main" ]
+  #   paths:
+  #     - app/**
+  # pull_request:
+  #   branches: [ "main" ]
+  #   paths:
+  #     - app/**
   workflow_dispatch:
 
 env:
   IMAGE_NAME: fastapi-sample-webapp
-
+  REGISTRY: devaksacr001.azurecr.io
 jobs:
 
-  Pytest:
+  Build-Test-Application:
     runs-on: ubuntu-latest
 
     steps:
     # Checkout Repo
     - uses: actions/checkout@v4
+    - name: Set current date as env variable
+      run: echo "TIME=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+    
     # Setup Python version
     - name: Setup Python
       uses: actions/setup-python@v5.2.0
       with:
         python-version: '3.11.7'
-        cache: 'pip' # caching pip dependencies
+
     # Test Python Application
     - name: Pytest
       run: |
           pip install -r requirements.txt
-          pip install pytest
-          pytest app/test_rest.py | tee app/test-results.txt
+          pytest app/test_rest.py | tee app/pytest-results-${{ github.sha }}-${{ env.TIME }}.txt
+
     # Upload Test Reulst as Artifact
     - name: Upload pytest test results
       uses: actions/upload-artifact@v4
       with:
         name: pytest-result
-        path: app/test-results.txt
-      # Use always() to always run this step to publish test results when there are test failures
+        path: app/pytest-results-${{ github.sha }}.txt
       if: ${{ always() }}
+
       # Notification build result to Slack
     - name: Post to a Slack channel
       id: slack
       uses: slackapi/slack-github-action@v1.27.0
       with:
-        # Slack channel id, channel name, or user id to post message.
-        # See also: https://api.slack.com/methods/chat.postMessage#channels
-        # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
         channel-id: 'C07T9V22C75'
-        # For posting a simple plain text message
         slack-message: "GitHub Action - ${{ github.workflow }} - Pytest Job result: ${{ job.status }}\n Check pytest result!\nRepository: ${{ github.repository }}\nActor: ${{ github.actor }}"
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
-  Build-And-Push:
+  Build-and-Push-Deploy:
     environment: prd-deployment-admin
     runs-on: ubuntu-latest
     steps:
     # Checkout Repo
     - uses: actions/checkout@v4
+
     # Setup Docker Buildx 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
     
-    # Login to Dockerhub
+    # Login to ACR
     - name: Docker Login to Dockerhub
       uses: docker/login-action@v3
       with:
-        username: ${{ vars.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        registry: ${{ env.REGISTRY }}
+        username: ${{ secrets.AZURE_CLIENT_ID }}
+        password: ${{ secrets.AZURE_CLIENT_SECRET }}
     
-    # Build and Push Container Image to Dockerhub
-    - name: Build and Push Docker image to Dockerhub
+    # Build and Push Container Image to ACR
+    - name: Build and Push Docker image to ACR
       uses: docker/build-push-action@v6.9.0
       with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          cache-from:
+          cache-to:
+          platforms: linux/amd64
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-    
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
     # Set image version to deployment manifest
     - name: Modify Manifest
       run: |
-        yq -i '.spec.template.spec.containers[0].image="${{ vars.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"' kubernetes/deployment.yaml
+        yq -i '.spec.template.spec.containers[0].image="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"' kubernetes/deployment.yaml
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'hyukjuns@github.com'
         git add kubernetes/deployment.yaml
@@ -97,11 +100,7 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v1.27.0
       with:
-        # Slack channel id, channel name, or user id to post message.
-        # See also: https://api.slack.com/methods/chat.postMessage#channels
-        # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
         channel-id: 'C07T9V22C75'
-        # For posting a simple plain text message
         slack-message: "GitHub Action - ${{ github.workflow }} - Docker Build and Push / Modify K8s Manifest result: ${{ job.status }}\n Repository: ${{ github.repository }}\n Actor: ${{ github.actor }}"
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

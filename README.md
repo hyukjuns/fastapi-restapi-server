@@ -1,14 +1,28 @@
 # FastAPI Sample API Server
+
+## Step
+1. Build Python Web Application
+2. Test Application
+3. Approve / Deny
+4. Delivery ACR
+5. Deploy QA
+6. Test Application
+7. Approve / Deny
+8. Deploy Production
+9. Monitoring / Logging
+10. Rollback or Continue
+
 ### Environments
-- Kubernete Cluster
-  - Azure Kubernetes Service 1.30.4
-  - Addons - Ingress NGINX Controller, ArgoCD
-- Single Github
-  - For Application Source
-  - For Kubernetes Manifests
-  - Github Action CI Pipeline
-- Dockerhub for Container Registry
-- Slack for Notification
+- Azure
+  - Azure VM (Self hosted Runner)
+  - Azure Kubernetes Service 1.28.13
+  - AKS Addons - Ingress NGINX Controller, ArgoCD
+  - Azure Container Registry
+- Github Repository
+  - Application Source Code & Kubernetes Manifest
+  - Github Actions Pipeline (CI)
+- Slack
+  - For Notification
 
 ### CI/CD Pipeline
 
