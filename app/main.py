@@ -3,6 +3,9 @@ import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
+# Set Version
+VERSION="v1"
+
 # Init App
 app = FastAPI()
 
@@ -72,10 +75,10 @@ async def delete_article(id: int):
 async def hostname():
     if os.path.exists('/var/run/secrets/kubernetes.io/serviceaccount') or os.getenv('KUBERNETES_SERVICE_HOST') is not None:
         hostname = os.environ.get("HOSTNAME")
-        return hostname            
+        return f"Version: {VERSION} hello from {hostname}"
     else:
         hostname = socket.gethostname()
-        return hostname
+        return f"Version: {VERSION} hello from {hostname}"
 
 # Check Readiness
 @app.get("/ready")
