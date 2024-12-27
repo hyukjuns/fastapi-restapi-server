@@ -90,7 +90,7 @@ jobs:
     # Set image version to deployment manifest
     - name: Modify Manifest
       run: |
-        yq -i '.spec.template.spec.containers[0].image="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"' kubernetes/deployment.yaml
+        yq -i '.spec.template.spec.containers[0].image="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"' manifests/rollouts.yaml
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'hyukjuns@github.com'
         git add kubernetes/deployment.yaml
