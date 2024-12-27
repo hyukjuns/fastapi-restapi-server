@@ -14,14 +14,26 @@ spec:
         path: "/"
         backend:
           service:
-            name: fastapi-webapp
+            name: active-fastapi-webapp
             port: 
               number: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fastapi-webapp
+  name: active-fastapi-webapp
+spec:
+  selector:
+    app: fastapi-webapp
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: preview-fastapi-webapp
 spec:
   selector:
     app: fastapi-webapp

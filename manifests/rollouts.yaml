@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: fastapi-webapp
+spec:
+  replicas: 3
+  strategy:
+    blueGreen:
+      activeService: active-fastapi-webapp
+      previewService: preview-fastapi-webapp
+      autoPromotionEnabled: false
+  selector:
+    matchLabels:
+      app: fastapi-webapp
+  template:
+    metadata:
+      labels:
+        app: fastapi-webapp
+    spec:
+      containers:
+        - name: fastapi-webapp
+          image: devaksacr001.azurecr.io/fastapi-sample-webapp:f27b994b96184081ac7d044ac4b909c9dc817f9e
+          resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - name: http
+              containerPort: 8080
+          # For Security
+          securityContext:
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+          # Check Availability
+          startupProbe:
+            httpGet:
+              path: /connections
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
