@@ -35,14 +35,14 @@ jobs:
     - name: Pytest
       run: |
           pip install -r requirements.txt
-          pytest app/test_rest.py | tee app/pytest-results-${{ github.sha }}-${{ env.TIME }}.txt
+          pytest app/test_rest.py | tee app/pytest-results-${{ github.sha }}.txt
 
     # Upload Test Reulst as Artifact
     - name: Upload pytest test results
       uses: actions/upload-artifact@v4
       with:
         name: pytest-result
-        path: app/pytest-results-${{ github.sha }}-${{ env.TIME }}.txt
+        path: app/pytest-results-${{ github.sha }}.txt
       if: ${{ always() }}
 
       # Notification build result to Slack
