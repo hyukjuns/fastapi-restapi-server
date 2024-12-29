@@ -1,8 +1,11 @@
 # FastAPI Sample API Server
 
 ## Todo
-- 배포 전략 (블루그린)
+- 배포 전략
+  - 블루그린
+  - 깃헙액션에서 argocd sync, rollout promote 진행할지 여부
 - 롤백 전략
+- 모니터링 전략
 
 ## Step
 1. Build Python Web Application
