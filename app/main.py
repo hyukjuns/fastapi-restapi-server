@@ -83,12 +83,12 @@ async def hostname():
 # Check Readiness
 @app.get("/ready")
 async def ready():
-    return "Application can response"
+    return f"Version: {VERSION}, Application can response"
 
 # Check Startup
 @app.get("/connections")
 async def connections_db():
-    return "Database Connection OK 123"
+    return f"Version: {VERSION}, Database Connection OK"
 
 
 if __name__ == "__main__":
