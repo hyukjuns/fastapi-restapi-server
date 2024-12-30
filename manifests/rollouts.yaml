@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: fastapi-webapp
-          image: devaksacr001.azurecr.io/fastapi-sample-webapp:0fff49e3c561ef0a72a9d3b671994f92634e0a4f
+          image: devaksacr001.azurecr.io/fastapi-sample-webapp:b7aa0c04cc5bfb5faf979ba8b307031c49c3c644
           resources:
             limits:
               cpu: 200m
