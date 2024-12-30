@@ -43,8 +43,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pip-
     
-    - name: Check pip cache
-      run: ls -l ~/.cache/pip
     # Test Python Application
     - name: Install Dependencies and Pytest
       run: |
