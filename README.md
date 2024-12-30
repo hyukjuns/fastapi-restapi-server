@@ -1,23 +1,31 @@
 # FastAPI Sample API Server
 
-## Todo
-- 배포 전략
-  - 블루그린
-  - 깃헙액션에서 argocd sync, rollout promote 진행할지 여부
-- 롤백 전략
-- 모니터링 전략
+## CI Step
+### Job 01
+1. Checkout repo
+2. Setup Python
+3. Setup pip cache (actions/cache@v3)
+4. Install Dependencies and PyTest Application
+5. Upload Pytest Results as Github Actions Artifacts
+6. Post to a Slack channel
+7. Approve / Deny (environment)
 
-## Step
-1. Build Python Web Application
-2. Test Application
-3. Approve / Deny
-4. Delivery ACR
-5. Rollouts 매니패스트 수정
-6. ArgoCD에 의해 감지
-7. Argo Rollout - Blue/Green 전략으로 새로운 버전 배포
-8. 신규 버전 테스트 후 프로모트 결정 - 블루/그린 배포 실행
-8. 모니터링 후 롤백 경정
-9. 롤백 혹은 유지
+### Job 02
+1. Checkout repo
+2. Setup Docker Buildx
+3. Login to ACR
+4. Build and Push Container Image to ACR (docker/build-push-action@v6.9.0) (registry type 빌드 캐시 사용)
+5. Modify Rollout Manifest by yq
+6. Post to a Slack channel
+
+## CD Step (GitOps)
+### Argo CD & Argo Rollouts
+1. Detect manifest change by Argo CD
+2. Auto Sync by Argo CD
+3. Blue / Green Deploy by Argo Rollouts
+4. Promote or Abort (Manually)
+5. Swap Active / Preview Service's Selector Hash
+6. Monitoring and rollback or not
 
 ### Environments
 - Azure
