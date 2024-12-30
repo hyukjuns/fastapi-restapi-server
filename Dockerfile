@@ -12,14 +12,14 @@ WORKDIR /home/python
 COPY requirements.txt /home/python
 RUN pip install -r requirements.txt
 
-# Application File
-COPY app/main.py /home/python
-
 # Setting PATH
 ENV PATH="/home/python/.local/bin:$PATH"
 
 # Port
 EXPOSE 8080
+
+# Application File
+COPY app/main.py /home/python
 
 # Worker Count = 1, run by uvicorn
 CMD ["fastapi", "run", "main.py", "--port", "8080"]
