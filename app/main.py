@@ -4,7 +4,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 # Set Version
-VERSION="v2"
+VERSION="v1"
 
 # Init App
 app = FastAPI()
