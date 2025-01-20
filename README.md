@@ -1,5 +1,14 @@
 # FastAPI Sample API Server
 
+## Todo
+- develop sample architecture
+  ```
+  1. Voting App
+  2. Result App
+  3. PostgreDB
+  4. Redis Cache
+  ```
+
 ## Environments
 - Azure
   - Azure Kubernetes Service 1.28.13
