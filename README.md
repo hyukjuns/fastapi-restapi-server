@@ -1,13 +1,21 @@
 # FastAPI Sample API Server
 
-## Todo
-- develop sample architecture
-  ```
-  1. Voting App
-  2. Result App
-  3. PostgreDB
-  4. Redis Cache
-  ```
+## V2 Todo
+
+1. Note App
+```
+GET /notes 모든 메모 조회
+GET /notes/{id} 특정 메모 조회
+POST /notes 새 메모 추가
+PUT /notes/{id} 메모 수정
+DELETE /notes/{id} 메모 삭제
+```
+2. MySQL
+3. Dockerfile, Docker-Compose
+4. Kubernetes Manifests
+5. 문서화
+6. CI/CD 개선
+
 
 ## Environments
 - Azure
