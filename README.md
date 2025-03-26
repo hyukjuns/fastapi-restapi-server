@@ -1,8 +1,11 @@
 # FastAPI Sample API Server
+## Goals
+- Develop and Build REST API Application
+- Make GitOps and High Observability
 
-## V2 Todo
-
-1. Note App
+### Todo
+1. Develop
+- Note App 개발, API 문서화
 ```
 GET /notes 모든 메모 조회
 GET /notes/{id} 특정 메모 조회
@@ -10,12 +13,11 @@ POST /notes 새 메모 추가
 PUT /notes/{id} 메모 수정
 DELETE /notes/{id} 메모 삭제
 ```
-2. MySQL
-3. Dockerfile, Docker-Compose
-4. Kubernetes Manifests
-5. 문서화
-6. CI/CD 개선
-
+- MySQL 연결 for CRUD
+2. CI: Github Actions, Docker Build, Python Unit Test (Pytest)
+3. IaC: Helm Chart for Deploy
+4. CD: ArgoCD - Blue/Green, Canary
+5. Load Test, Monitoring - Prometheus, Loki, [Locust](https://locust.io/)
 
 ## Environments
 - Azure
