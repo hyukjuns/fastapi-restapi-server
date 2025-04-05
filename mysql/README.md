@@ -6,12 +6,13 @@
 
 ### 컨테이너 실행
 docker run -d -p 3306:3306 \
---env MYSQL_DATABASE=note \
+--env MYSQL_DATABASE=notes \
 --env MYSQL_ROOT_PASSWORD=myadmin \
 --env MYSQL_USER=myadmin \
 --env MYSQL_PASSWORD=myadmin \
 mysql:8.2.0
 
+DB_CONNECTION_STRING="mysql+pymysql://myadmin:myadmin@172.17.0.2:3306/notes"
 ---
 초기 데이터가 셋업된 MySQL 도커 이미지 
 
