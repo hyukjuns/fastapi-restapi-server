@@ -2,20 +2,39 @@ import os, socket
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from sqlalchemy.orm import sessionmaker, Session, declarative_base
+from sqlalchemy import create_engine
+import os
 
+DATABASE_URL = f"mysql+pymysql://{os.getenv('MYSQL_DATABASE_USER')}:{os.getenv('MYSQL_DATABASE_PASSWORD')}@{os.getenv('MYSQL_DATABASE_HOST')}/{os.getenv('MYSQL_DATABASE_DB')}"
+
+engine = create_engine(DATABASE_URL, pool_pre_ping=True, pool_size=10, max_overflow=20)
+SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+Base = declarative_base()
 # Set Version
 VERSION="v1"
 
 # Init App
 app = FastAPI()
 
+
+# DB Session 의존성 주입
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@app.get("/players/")
+def read_players(db: Session = Depends(get_db)):
+    players = db.execute("SELECT * FROM player").fetchall()
+    return players
+
 # Define Class
 class Note(BaseModel):
     id: int
     note: str
-
-# Fake DB
-fake_notes_db = []
 
 # GET /notes 모든 메모 조회
 @app.get("/notes")
